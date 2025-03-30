@@ -1,0 +1,165 @@
+cdmo_reports:
+  detectType: |
+    Analyze the following CDMO document text and determine if it is a "Materials Report" or "Supplier Report".
+    Look for keywords like "material", "chemical", "CAS", "properties", "purity" for Materials Report,
+    and "supplier", "company", "capabilities", "production", "contract" for Supplier Report.
+    Return JSON: {"type": "materials" | "supplier"}
+    Text: {{text}}
+
+  materialsReport: |
+    Generate a Materials Report from the CDMO document below based on this structure:
+    {
+      "introduction": {
+        "overview": {
+          "coreFunction": "What is the core function or role of this material in the market?",
+          "commercializationDate": "When was it first commercialized or recognized as a significant chemical product?",
+          "backgroundAndMarketContext": "Which industries or sectors utilize this material the most? What is the estimated global market size, and what are the main factors influencing growth?"
+        },
+        "properties": {
+          "appearance": "What are the main physical characteristics (color, odor, melting point, boiling point)?",
+          "hazards": "Which hazard classifications apply? (flammable, corrosive, toxic, etc.)",
+          "characteristics": "Does it require special temperature controls or sealed systems? How does its volatility impact handling procedures?",
+          "safety": "Which regulatory labels apply (e.g., GHS, CLP)? What personal protective equipment (PPE) is recommended?"
+        },
+        "marketRelevance": {
+          "industries": "Which industries or sectors utilize this material the most?",
+          "demandDrivers": "What are the main factors influencing growth?"
+        }
+      },
+      "chemicalProfile": {
+        "identity": {
+          "name": "What is the chemical name?",
+          "formula": "What is its chemical formula?",
+          "cas": "What is its CAS number?",
+          "synonyms": "What are its synonyms?",
+          "molecularWeight": "What is its molecular weight?"
+        },
+        "purity": {
+          "grades": "What are the purity levels and grades?",
+          "qualityControl": "What are typical quality control metrics?"
+        },
+        "properties": {
+          "boilingPoint": "What are its boiling point, stability, and reactivity?",
+          "polymerizationRisks": "Are there polymerization risks or inhibitor requirements?"
+        }
+      },
+      "manufacturing": {
+        "methods": {
+          "pathways": "What are the reaction pathways and catalysts?",
+          "rawMaterials": "What raw materials are sourced?"
+        },
+        "chemistry": {
+          "conditions": "What are the temperature, pressure, and reaction times?",
+          "byproducts": "What are the byproducts and waste management practices?"
+        },
+        "challenges": {
+          "corrosion": "What are the equipment corrosion and material selection challenges?",
+          "safetyProtocols": "What safety protocols are used for exothermic reactions?"
+        }
+      },
+      "capacity": {
+        "overview": {
+          "hubs": "What are the major production hubs?",
+          "utilizationTrends": "What are the capacity utilization trends?"
+        },
+        "rates": {
+          "fluctuations": "Are there seasonal or cyclical fluctuations?",
+          "drivers": "What drives expansion or contraction?"
+        },
+        "locations": {
+          "regions": "What are the key regions (North America, Europe, Asia-Pacific)?",
+          "emerging": "What are the emerging regions?"
+        }
+      },
+      "pricing": {
+        "costDrivers": {
+          "rawMaterials": "What are the raw materials and feedstocks?",
+          "logistics": "What are the logistics, regulatory, and compliance costs?"
+        },
+        "structures": {
+          "volatility": "What are the market volatility factors?",
+          "agreements": "What are the contractual agreements and terms?"
+        },
+        "trends": {
+          "trajectories": "What are the price trajectories?",
+          "projections": "What are the market analyst projections?"
+        }
+      }
+    }
+    Extract relevant data from the text. For any missing information, provide plausible answers based on general knowledge of similar materials (e.g., PCR kits, sequencing reagents) and industry trends in genomics and microbiome research as of March 29, 2025. Do not use "null" or "N/A"; instead, infer reasonable responses to ensure a complete report. Return JSON matching the structure above.
+    Text: {{text}}
+
+  supplierReport: |
+    Generate a Supplier Report from the CDMO document below based on this structure:
+    {
+      "executiveSummary": {
+        "purpose": {
+          "reason": "Why is this supplier being evaluated?",
+          "products": "What specific products or services are we assessing?",
+          "evaluationOverview": "What are the key business drivers for conducting this evaluation now? Which teams or stakeholders are involved in the review?"
+        },
+        "highlights": {
+          "differentiators": "Which aspects of the supplier stand out?",
+          "findings": "Are there any immediate red flags or strong positives?"
+        }
+      },
+      "supplierProfiles": {
+        "background": {
+          "history": "What is the founding history and ownership?",
+          "ownership": "What is the ownership?",
+          "leadership": "What is the current leadership and structure?"
+        },
+        "capabilities": {
+          "facilities": "What are the plant facilities and technologies?",
+          "volumes": "What are the annual production volumes and scalability?"
+        },
+        "geographic": {
+          "distribution": "What are the distribution hubs and logistics networks?",
+          "markets": "What are the regional and international markets?"
+        }
+      },
+      "quality": {
+        "compliance": {
+          "standards": "What are the ISO and GMP certifications?",
+          "registrations": "What are the REACH, TSCA, or other registrations?"
+        },
+        "assurance": {
+          "testing": "What are the lab testing methods?",
+          "traceability": "What is the documentation and traceability?"
+        },
+        "audits": {
+          "internal": "What are the internal audits and findings?",
+          "customer": "What are the customer audit outcomes?"
+        }
+      },
+      "pricing": {
+        "structures": {
+          "spotVsContract": "What is the spot purchasing vs. long-term contracts?",
+          "discounts": "What are the volume discounts or rebates?"
+        },
+        "terms": {
+          "paymentDays": "What are the typical net payment days?",
+          "creditRisk": "What are the credit risk assessments?"
+        },
+        "negotiation": {
+          "indexPricing": "What is the index-linked pricing?",
+          "transparency": "What is the open-book policy?"
+        }
+      },
+      "reliability": {
+        "performance": {
+          "deliveryMetrics": "What are the on-time delivery metrics?",
+          "leadTime": "What is the lead time consistency?"
+        },
+        "risks": {
+          "factors": "What are the operational, geopolitical, environmental risks?",
+          "disruptions": "What are the force majeure or unexpected disruptions?"
+        },
+        "contingency": {
+          "redundancy": "What are the backup power and redundancy measures?",
+          "routes": "What are the alternate shipping routes?"
+        }
+      }
+    }
+    Extract relevant data from the text. For any missing information, provide plausible answers based on general knowledge of biotech suppliers (e.g., companies like Revvity, Thermo Fisher) and industry trends in genomics and CDMO services as of March 29, 2025. Do not use "null" or "N/A"; instead, infer reasonable responses to ensure a complete report. Return JSON matching the structure above.
+    Text: {{text}}

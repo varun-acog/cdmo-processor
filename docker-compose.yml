@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  cdmo-processor:
+    build: .
+    container_name: cdmo-processor
+    env_file: .env
+    volumes:
+      - ./documents:/app/documents
+      - ./reports:/app/reports
+    command: ["tail", "-f", "/dev/null"]
+
+
